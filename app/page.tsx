@@ -1,3 +1,5 @@
+import { supabase } from '../lib/supabase'
+
 import Footer from "../components/Footer";
 
 import NoticeCard from "../components/NoticeCard";
@@ -18,41 +20,11 @@ import HeroBanner from "../components/HeroBanner";
 
 import Header from "../components/Header";
 
-export default function CareerBridgeLanding() {
-  const notices = [
-    {
-      type: '평가위원',
-      title: '스마트도시 데이터 플랫폼 운영 민간위탁 적격자심의위원 모집',
-      org: '대구광역시',
-      area: '대구',
-      field: 'ICT · 빅데이터',
-      deadline: 'D-2',
-    },
-    {
-      type: '자문위원',
-      title: 'AI 교육콘텐츠 개발사업 전문가 자문위원 모집',
-      org: '한국교육진흥원',
-      area: '서울',
-      field: '교육공학 · AI',
-      deadline: 'D-5',
-    },
-    {
-      type: '멘토',
-      title: '창업중심대학 예비창업자 전담멘토 모집',
-      org: '창업혁신센터',
-      area: '전국',
-      field: '창업 · 경영',
-      deadline: 'D-1',
-    },
-    {
-      type: '강사',
-      title: '중장년 디지털 역량강화 전문강사 모집',
-      org: '지역인재개발원',
-      area: '부산',
-      field: '디지털 · 교육',
-      deadline: 'D-7',
-    },
-  ];
+export default async function CareerBridgeLanding() {
+const { data: notices } = await supabase
+  .from('notices')
+  .select('*')
+  .order('created_at', { ascending: false })
 
   const regions = [
     '전체', '서울', '부산', '대구', '인천', '광주', '대전', '울산', '세종',
