@@ -1,4 +1,7 @@
+import Link from "next/link";
+
 type Notice = {
+  id: number;
   type: string;
   title: string;
   org: string;
@@ -46,10 +49,11 @@ export default function NoticeList({ notices }: NoticeListProps) {
             const deadlineText = item.deadline === "D-7" ? "마감여유" : item.deadline;
 
             return (
-              <article
+              <Link
                 key={idx}
-                className="rounded-2xl border border-slate-200 bg-white px-7 py-6 shadow-sm transition-all hover:border-[#8BBEFF] hover:shadow-md"
-              >
+                href={`/notices/${item.id}`}
+                className="block rounded-2xl border border-slate-200 bg-white px-7 py-6 shadow-sm transition-all hover:border-[#8BBEFF] hover:shadow-md"
+            >
                 <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
                   <div className="min-w-0 flex-1">
                     <div className="mb-4 flex flex-wrap items-center gap-2">
@@ -83,7 +87,7 @@ export default function NoticeList({ notices }: NoticeListProps) {
                     </button>
                   </div>
                 </div>
-              </article>
+              </Link>
             );
           })}
         </div>
