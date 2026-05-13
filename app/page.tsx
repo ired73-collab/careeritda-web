@@ -20,6 +20,9 @@ import HeroBanner from "../components/HeroBanner";
 
 import Header from "../components/Header";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function CareerBridgeLanding() {
 const { data: notices } = await supabase
   .from('notices')
