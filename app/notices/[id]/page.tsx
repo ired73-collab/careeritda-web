@@ -68,10 +68,9 @@ export default async function NoticeDetailPage({
             <h2 className="mb-4 text-xl font-black text-[#0B1F44]">
               공고 안내
             </h2>
-            <p className="leading-relaxed text-slate-700">
-              해당 공고는 {notice.org}에서 모집 중인 {notice.type} 관련 공고입니다.
-              상세 모집 요강, 제출 서류, 접수 방법은 추후 관리자 입력 항목을 확장하여 표시할 수 있습니다.
-            </p>
+            <p className="whitespace-pre-line leading-relaxed text-slate-700">
+  {notice.content}
+</p>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
