@@ -11,6 +11,7 @@ export default function AdminNoticePage() {
     area: "",
     field: "",
     deadline: "",
+    content: "",
   });
 
   const [message, setMessage] = useState("");
@@ -44,6 +45,7 @@ export default function AdminNoticePage() {
       area: "",
       field: "",
       deadline: "",
+      content: "",
     });
   };
 
@@ -62,6 +64,15 @@ export default function AdminNoticePage() {
           <Input name="area" label="지역" value={form.area} onChange={handleChange} placeholder="대구" />
           <Input name="field" label="분야" value={form.field} onChange={handleChange} placeholder="ICT · 빅데이터" />
           <Input name="deadline" label="마감 표시" value={form.deadline} onChange={handleChange} placeholder="D-2" />
+
+          <TextArea
+            name="content"
+            label="상세 내용"
+            value={form.content}
+            onChange={handleChange}
+            placeholder="공고 상세 설명을 입력하세요"
+            rows={8}
+          />
 
           <button
             type="submit"
@@ -116,12 +127,14 @@ function TextArea({
   value,
   onChange,
   placeholder,
+  rows = 3,
 }: {
   name: string;
   label: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   placeholder: string;
+  rows?: number;
 }) {
   return (
     <label className="block">
@@ -133,7 +146,7 @@ function TextArea({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        rows={3}
+        rows={rows}
         className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none focus:border-[#0759C8] focus:ring-4 focus:ring-blue-100"
       />
     </label>
